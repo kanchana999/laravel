@@ -1,0 +1,15 @@
+name: Slack Notification
+
+on: [push]  
+
+jobs:
+  slack_notification:
+    runs-on: ubuntu-latest 
+
+    steps:
+    - name: Notify Slack
+      uses: 8398a7/action-slack@v3.15.1
+      with:
+        status: ${{ job.status }} 
+        fields: repo,message,commit,author,action,eventName,ref,workflow,job,took,pullRequest 
+        slack_webhook_url: ${{ secrets.SLACK_WEBHOOK_URL }} 
