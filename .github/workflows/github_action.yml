@@ -21,7 +21,7 @@ jobs:
         with:
           switches: -avzr --delete
           path: ./
-          remote_path: /var/www/html/  
+          remote_path: /var/www/html/    #path
           remote_host: 18.234.225.180
           remote_user: ec2-user
           remote_key: ${{ secrets.EC2_SSH_PRIVATE_KEY }}
