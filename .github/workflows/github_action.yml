@@ -18,5 +18,5 @@ jobs:
 
       - name: Deploy to0 EC2
         run: |
-          rsync -r --delete-after --quiet -e "ssh -i ${{ secrets.EC2_SSH_PRIVATE_KEY }}" \
-            ./ ec2-user@18.234.225.180:/var/www/html/
+          rsync -r --delete-after --quiet -e "ssh -i ${{ secrets.EC2_SSH_PRIVATE_KEY }}" ./ ec2-user@18.234.225.180:/var/www/html/
+
