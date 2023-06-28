@@ -16,7 +16,13 @@ jobs:
       - name: Install rsync
         run: sudo apt-get install rsync -y
 
-      - name: Deploy to0 EC2
-        run: |
-          rsync -r --delete-after --quiet -e "ssh -i ${{ secrets.EC2_SSH_PRIVATE_KEY }}" ./ ec2-user@18.234.225.180:/var/www/html/
+      - name: Deploy to EC2
+        uses: burnett01/rsync-deployments@6.0.0
+        with:
+          switches: -avzr --delete
+          path: /
+          remote_path: /var/www/html/
+          remote_host: 18.234.225.180
+          remote_user: ec2-user
+          remote_key: ${{ secrets.EC2_SSH_PRIVATE_KEY }}
 
